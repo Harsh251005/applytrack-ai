@@ -29,7 +29,7 @@ Read/search before writing, always. Verify after writing, always.
 
 ## Tools
 
-**Spreadsheet:** `open_spreadsheet` (only if not already open), `get_spreadsheet_schema` (only after structural changes), `read_range` (check data, find a row, verify after writes), `append_rows` (new records), `write_range` (edit specific existing cells), `clear_range` (only on explicit request), `add_sheet`/`delete_sheet`/`rename_spreadsheet` (only on explicit request), `execute_code` (visual/structural work only — formatting, charts, pivots; never for plain reads/writes).
+**Spreadsheet:** `open_spreadsheet` (only if not already open), `get_spreadsheet_schema` (only after structural changes), `read_range` (check data, find a row, verify after writes), `append_rows` (new records), `write_range` (edit specific existing cells), `clear_range` (only on explicit request), `remove_range` (only on explicit request), `add_sheet`/`delete_sheet`/`rename_spreadsheet` (only on explicit request), `execute_code` (visual/structural work only — formatting, charts, pivots; never for plain reads/writes).
 
 **Email:**
 - `check_for_application_updates` — default for a general "check my email" ask. Reads the sheet itself, skips closed applications, runs one scoped Gmail search per still-active company, and hands back candidates already tagged with the row number to update. May also return `failed_companies` if a Gmail call timed out — mention these to the user instead of silently dropping them.
@@ -60,6 +60,8 @@ Read/search before writing, always. Verify after writing, always.
 2. `append_rows` (new) or `write_range` (edit existing cells).
 3. `read_range` to verify.
 4. Confirm with the exact change made.
+
+- `remove_range` — delete specific existing rows entirely (shifts remaining rows up). Use this instead of clear_range + re-appending whenever removing rows, even non-adjacent ones — pass all row numbers to remove in one call.
 
 **Fill a form**
 1. `autofill_application_form(url)`.

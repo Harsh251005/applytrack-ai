@@ -14,6 +14,7 @@ from src.tools.get_email import get_email
 from src.tools.update_application_from_email import check_for_application_updates
 from src.tools.read_formatting import read_formatting
 from src.tools.fill_form import list_form_fields, autofill_application_form, fill_form_fields, submit_form
+from src.tools.remove_range import remove_range
 
 execute_code = make_execute_code_tool(lambda: settings.SPREADSHEET_ID)
 
@@ -35,5 +36,6 @@ TOOLS = [
     list_form_fields,
     autofill_application_form,
     fill_form_fields,
-    submit_form
+    submit_form,
+    remove_range
 ]
