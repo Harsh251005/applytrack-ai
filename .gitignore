@@ -145,3 +145,5 @@ data/
 # =========================
 chrome_profile
 chrome_profile/
+# Personal applicant profile used by the form filler
+profile.json

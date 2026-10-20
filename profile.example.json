@@ -1,0 +1,18 @@
+{
+  "full_name": "Jane Doe",
+  "first_name": "Jane",
+  "last_name": "Doe",
+  "email": "jane@example.com",
+  "phone": "",
+  "linkedin_url": "https://www.linkedin.com/in/your-handle/",
+  "github_url": "https://github.com/your-handle",
+  "resume_path": "/absolute/path/to/resume.pdf",
+  "current_location": "City, Country",
+  "university": "Your University",
+  "degree": "Your Degree",
+  "graduation_year": "2026",
+  "years_of_experience": "0",
+  "cover_letter": "One or two sentences about you, reused for cover-letter fields.",
+  "expected_salary": "",
+  "notice_period": "Immediate"
+}

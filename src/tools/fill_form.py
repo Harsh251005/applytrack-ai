@@ -84,28 +84,16 @@ from agents import function_tool
 
 
 # ---------------------------------------------------------------------------
-# 1. YOUR PROFILE - edit these values once, reused by autofill_application_form.
+# 1. YOUR PROFILE - loaded from profile.json (gitignored), reused by autofill_application_form.
 #    `overrides` in that tool call can patch any of these per-application.
 # ---------------------------------------------------------------------------
 
-APPLICANT_PROFILE: dict[str, str] = {
-    "full_name": "Harsh Dharnidharka",
-    "first_name": "Harsh",
-    "last_name": "Dharnidharka",
-    "email": "dharnidharkaharsh@gmail.com",
-    "phone": "[REDACTED]",
-    "linkedin_url": "https://www.linkedin.com/in/harsh-dharnidharka/",
-    "github_url": "https://github.com/Harsh251005",
-    "resume_path": r"C:\Users\harsh\Downloads\Harsh_Dharnidharka_Resume.pdf",  # absolute local path to your resume PDF, for file-upload fields
-    "current_location": "Mumbai, India",
-    "university": "University of Mumbai",
-    "degree": "BSc IT",
-    "graduation_year": "2026",
-    "years_of_experience": "0",
-    "cover_letter": "I'm an Applied AI Engineer focused on building agentic systems with LangGraph and the OpenAI Agents SDK. I'd love to bring that hands-on experience to your team.",
-    "expected_salary": "",
-    "notice_period": "Immediate",
-}
+PROFILE_FILE = Path(__file__).resolve().parents[2] / "profile.json"
+
+# Without a profile, autofill matches nothing and every field is handed back to the LLM.
+APPLICANT_PROFILE: dict[str, str] = (
+    json.loads(PROFILE_FILE.read_text(encoding="utf-8")) if PROFILE_FILE.exists() else {}
+)
 
 # Persistent browser profile - sign into Google here ONCE (see note above).
 BROWSER_PROFILE_DIR = Path.home() / ".applytrack_ai" / "browser_profile"
